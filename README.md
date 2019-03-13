@@ -16,5 +16,5 @@ To view the schedule for a specific day pass the acronym of the day along side w
 	```
 
 ## Installation Guide
-> Keep the pdf with schedule in the same directory as test.py
+> Keep the pdf with schedule in the same directory as test.py\
 > Run the script in GreyBox
