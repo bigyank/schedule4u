@@ -4,7 +4,6 @@ import calendar
 import json
 import glob
 from tabulate import tabulate
-from beautifultable import BeautifulTable
 
 
 def pdf_extract(group):
