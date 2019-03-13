@@ -3,6 +3,8 @@ from datetime import date
 import calendar
 import json
 import glob
+from tabulate import tabulate
+from beautifultable import BeautifulTable
 
 
 def pdf_extract(group):
@@ -11,21 +13,37 @@ def pdf_extract(group):
     pdf_file = glob.glob("./*.pdf")
     min_schedule = []
     df = tabula.read_pdf(pdf_file[0], pages="all")
-    # print(test)
     schedule = df.values.tolist()
     return schedule
 
 
 def user_group(schedule, group):
-    """Displays the schedule of the group
+    """Extracts the schedule of the group
     that the user inputs"""
     min_schedule = []
     for values in schedule:
         if group in values[6]:
             min_schedule.append(values)
-            if date_today == values[0].title():
-                print((" ".join(str(x) for x in values)))
     save_to_json(group, min_schedule)
+    display(min_schedule)
+
+
+def display(group_schedule):
+    today_schedule = []
+    header = [
+        "Time",
+        "Class Type",
+        "Module Title",
+        "Lecturer",
+        "Group",
+        "Block",
+        "Room",
+    ]
+    for values in group_schedule:
+        if date_today == values[0].title():
+            today_schedule.append(values[1:3] + values[4:])
+
+    print(tabulate(today_schedule, headers=header, tablefmt="orgtbl"))
 
 
 def save_to_json(group, min_schedule):
@@ -44,7 +62,7 @@ def main(group):
         schedule = pdf_extract(group)
         user_group(schedule, group)
     else:
-        user_group(contents, group)
+        display(contents)
 
 
 days = list(calendar.day_abbr)
