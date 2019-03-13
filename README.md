@@ -14,3 +14,7 @@ To view the schedule for a specific day pass the acronym of the day along side w
 	```
 	EG: B2 Mon, N6 Sun
 	```
+
+## Installation Guide
+> Keep the pdf with schedule in the same directory as test.py
+> Run the script in GreyBox
