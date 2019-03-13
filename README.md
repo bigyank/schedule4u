@@ -3,6 +3,7 @@
 ## Small pdf extractor script 
 
 Requirements: [Tabula](https://pypi.org/project/tabula-py/)
+			: [Tabulate](https://pypi.org/project/tabulate/)
 
 To view the schedule for today just pass the Group name
 	```
